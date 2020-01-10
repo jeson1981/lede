@@ -207,10 +207,10 @@ jobs:
           du -h --max-depth=1 ./bin
 
       - name: Prepare artifact
-        run: find ./bin/packages/ -type d -name "packages" | xargs rm -rf {}
+        run: find ./bin/targets/ -type d -name "packages" | xargs rm -rf {}
 
       - name: Upload artifact
         uses: actions/upload-artifact@master
         with:
           name: OpenWrt firmware
-          path: ./bin/packages/
+          path: ./bin/targets/bcm53xx/generic/openwrt-bcm53xx-phicomm-k3-squashfs.trx
