@@ -10,9 +10,9 @@
 name: OpenWrt-CI
 
 on:
-  push:
-    branches: 
-      - master
+  # push:
+    # branches: 
+      # - master
   # schedule:
   #   - cron: 0 20 * * *
   # release:
@@ -156,6 +156,7 @@ jobs:
           CONFIG_PACKAGE_luci-app-webadmin=y
           CONFIG_PACKAGE_luci-app-wireguard=y
           CONFIG_PACKAGE_luci-app-wrtbwmon=y
+          CONFIG_PACKAGE_luci-app-syncdial=y
           EOF
 
           # LuCI主题:
