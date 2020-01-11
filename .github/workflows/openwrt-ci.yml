@@ -205,12 +205,19 @@ jobs:
           du -h --max-depth=1 ./ --exclude=build_dir --exclude=bin
           du -h --max-depth=1 ./build_dir
           du -h --max-depth=1 ./bin
+          ls ./bin/packages/
+          ls ./bin/targets/
 
       - name: Prepare artifact
-        run: find ./bin/packages/ -type d -name "packages" | xargs rm -rf {}
+        run: |
+          rm -rf ./artifact/
+          mkdir -p ./artifact/
+          find ./bin/targets/ -name "*openwrt-bcm53xx-phicomm-k3-squashfs.trx*" | xargs -i mv -f {} ./artifact/
+          find ./bin/packages/ -name "*.ipk" | xargs -i mv -f {} ./artifact/
+        
 
       - name: Upload artifact
         uses: actions/upload-artifact@master
         with:
           name: OpenWrt firmware
-          path: ./bin/packages/
+          path: ./artifact/
