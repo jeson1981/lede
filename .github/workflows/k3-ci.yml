@@ -138,18 +138,18 @@ jobs:
           CONFIG_PACKAGE_luci-app-adbyby-plus=y
           CONFIG_PACKAGE_luci-app-aria2=y
           CONFIG_PACKAGE_luci-app-baidupcs-web=y
-          CONFIG_PACKAGE_luci-app-docker=m
-          CONFIG_PACKAGE_luci-app-frpc=m
+          CONFIG_PACKAGE_luci-app-docker=y
+          CONFIG_PACKAGE_luci-app-frpc=y
           CONFIG_PACKAGE_luci-app-kodexplorer=y
           CONFIG_PACKAGE_luci-app-minidlna=y
           CONFIG_PACKAGE_luci-app-openvpn=y
           CONFIG_PACKAGE_luci-app-openvpn-server=y
           CONFIG_PACKAGE_luci-app-qbittorrent=y
-          CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Kcptun=m
-          CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Shadowsocks=m
-          CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_ShadowsocksR_Server=m
-          CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_ShadowsocksR_Socks=m
-          CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_V2ray=m
+          CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Kcptun=y
+          CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Shadowsocks=y
+          CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_ShadowsocksR_Server=y
+          CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_ShadowsocksR_Socks=y
+          CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_V2ray=y
           CONFIG_PACKAGE_luci-app-ttyd=y
           CONFIG_PACKAGE_luci-app-v2ray-server=y
           CONFIG_PACKAGE_luci-app-verysync=y
@@ -157,17 +157,21 @@ jobs:
           CONFIG_PACKAGE_luci-app-wireguard=y
           CONFIG_PACKAGE_luci-app-wifischedule=y
           CONFIG_PACKAGE_luci-app-wrtbwmon=y
-          CONFIG_PACKAGE_luci-app-syncdial=m
-          CONFIG_PACKAGE_luci-app-wol=m
-          CONFIG_PACKAGE_luci-app-autoreboot=m
-          CONFIG_PACKAGE_luci-app-ssrserver-python=m
-          CONFIG_DEFAULT_k3wifi=m
+          CONFIG_PACKAGE_luci-app-syncdial=y
+          CONFIG_PACKAGE_luci-app-wol=y
+          CONFIG_PACKAGE_luci-app-autoreboot=y
+          CONFIG_PACKAGE_luci-app-ssrserver-python=y
+          CONFIG_PACKAGE_luci-app-mwan3=y
+          CONFIG_PACKAGE_luci-app-mwan3helper=y
+          CONFIG_DEFAULT_k3wifi=y
           EOF
 
           # LuCI主题:
           cat >> .config <<EOF
           CONFIG_PACKAGE_luci-theme-argon=y
           CONFIG_PACKAGE_luci-theme-netgear=y
+          CONFIG_PACKAGE_luci-theme-bootstrap=y
+          CONFIG_PACKAGE_luci-theme-material=y
           EOF
 
           # 常用软件包:
@@ -211,6 +215,7 @@ jobs:
           du -h --max-depth=1 ./ --exclude=build_dir --exclude=bin
           du -h --max-depth=1 ./build_dir
           du -h --max-depth=1 ./bin
+          du -h --max-depth=1 ./bin/targets/
           ls ./bin/packages/
           ls ./bin/targets/
 
@@ -219,7 +224,7 @@ jobs:
           rm -rf ./artifact/
           mkdir -p ./artifact/
           find ./bin/targets/ -name "*openwrt-bcm53xx-phicomm-k3-squashfs.trx*" | xargs -i mv -f {} ./artifact/
-          find ./bin/packages/ -name "*.ipk" | xargs -i mv -f {} ./artifact/
+          # find ./bin/packages/ -name "*.ipk" | xargs -i mv -f {} ./artifact/
         
 
       - name: Upload artifact
