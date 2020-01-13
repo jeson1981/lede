@@ -121,6 +121,11 @@ jobs:
 
           # 多文件系统支持:
           cat >> .config <<EOF
+          CONFIG_PACKAGE_kmod-fs-nfs=y
+          CONFIG_PACKAGE_kmod-fs-nfs-common=y
+          CONFIG_PACKAGE_kmod-fs-nfs-v3=y
+          CONFIG_PACKAGE_kmod-fs-nfs-v4=y
+          CONFIG_PACKAGE_kmod-fs-ntfs=y
           CONFIG_PACKAGE_kmod-fs-squashfs=y
           EOF
 
@@ -223,7 +228,7 @@ jobs:
         run: |
           rm -rf ./artifact/
           mkdir -p ./artifact/
-          find ./bin/targets/ -name "*.*" | xargs -i mv -f {} ./artifact/
+          find ./bin/targets/ -name "*.vmdk*" | xargs -i mv -f {} ./artifact/
           # find ./bin/packages/ -name "*.ipk" | xargs -i mv -f {} ./artifact/
         
 
