@@ -216,14 +216,14 @@ jobs:
           du -h --max-depth=1 ./build_dir
           du -h --max-depth=1 ./bin
           du -h --max-depth=1 ./bin/targets/
-          ls ./bin/packages/
-          ls ./bin/targets/
+          ls ./bin/packages/ -R
+          ls ./bin/targets/ -R
 
       - name: Prepare artifact
         run: |
           rm -rf ./artifact/
           mkdir -p ./artifact/
-          find ./bin/targets/ -name "*.vmdk" | xargs -i mv -f {} ./artifact/
+          find ./bin/targets/ -name "*.*" | xargs -i mv -f {} ./artifact/
           # find ./bin/packages/ -name "*.ipk" | xargs -i mv -f {} ./artifact/
         
 
