@@ -131,6 +131,7 @@ jobs:
           CONFIG_PACKAGE_kmod-usb2=y
           CONFIG_PACKAGE_kmod-usb2-pci=y
           CONFIG_PACKAGE_kmod-usb3=y
+          CONFIG_PACKAGE_kmod-macvlan=y
           EOF
 
           # 常用LuCI插件选择:
@@ -162,7 +163,9 @@ jobs:
           CONFIG_PACKAGE_luci-app-autoreboot=y
           CONFIG_PACKAGE_luci-app-ssrserver-python=y
           CONFIG_PACKAGE_luci-app-mwan3=y
+          CONFIG_PACKAGE_luci-i18n-mwan3-zh-cn=y
           CONFIG_PACKAGE_luci-app-mwan3helper=y
+          CONFIG_PACKAGE_luci-i18n-mwan3helper-zh-cn=y
           CONFIG_DEFAULT_k3wifi=y
           EOF
 
@@ -183,6 +186,7 @@ jobs:
           CONFIG_PACKAGE_tree=y
           CONFIG_PACKAGE_vim-fuller=y
           CONFIG_PACKAGE_wget=y
+          CONFIG_PACKAGE_mwan3=y
           # EOF
 
           # 取消编译VMware镜像以及镜像填充 (不要删除被缩进的注释符号):
@@ -224,6 +228,8 @@ jobs:
           rm -rf ./artifact/
           mkdir -p ./artifact/
           find ./bin/targets/ -name "*openwrt-bcm53xx-phicomm-k3-squashfs.trx*" | xargs -i mv -f {} ./artifact/
+          cp ./.config ccc.config
+          find ./ -name "ccc.config" | xargs -i mv -f {} ./artifact/
           # find ./bin/packages/ -name "*.ipk" | xargs -i mv -f {} ./artifact/
         
 
