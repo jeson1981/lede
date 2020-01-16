@@ -160,15 +160,11 @@ jobs:
           CONFIG_PACKAGE_luci-app-syncdial=y
           CONFIG_PACKAGE_luci-app-wol=y
           CONFIG_PACKAGE_luci-app-autoreboot=y
-          CONFIG_PACKAGE_luci-app-ssrserver-python=y
           CONFIG_PACKAGE_luci-app-mwan3=y
           CONFIG_PACKAGE_luci-i18n-mwan3-zh-cn=y
           CONFIG_PACKAGE_luci-app-mwan3helper=y
           CONFIG_PACKAGE_luci-i18n-mwan3helper-zh-cn=y
           CONFIG_PACKAGE_wifischedule=y
-          CONFIG_PACKAGE_luci-app-freifunk-diagnostics=y
-          CONFIG_PACKAGE_luci-app-freifunk-policyrouting=y
-          CONFIG_PACKAGE_luci-app-freifunk-widgets=y
           CONFIG_PACKAGE_ddns-scripts_aliyun=y
           EOF
 
