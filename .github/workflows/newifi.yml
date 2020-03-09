@@ -7,7 +7,7 @@
 # <https://github.com/KFERMercer/OpenWrt-CI>
 #
 
-name: newifi3-CI
+name: newifi3
 
 on:
   push:
